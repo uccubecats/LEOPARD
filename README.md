@@ -7,6 +7,9 @@
 | Grace Gamstetter | Team Lead |
 | Chris Morrison | Team Member |
 | Wesley Bumpus | Team Member |
+| Henry Voss | Team Member |
+| Nathan Brown | Team Member |
+| Jared Musser | Team Member |
 
-## Aknowledgements of Technologies and Softwares Used
+## Acknowledgements of Technologies and Softwares Used
 
