@@ -1,0 +1,15 @@
+{
+    "C_Cpp.default.browse.path": [
+        "/Users/gracegamstetter/cubecats/LEOPARD/bqJunior",
+        "/Users/gracegamstetter/cubecats/LEOPARD/payload",
+        "/Users/gracegamstetter/cubecats/LEOPARD/hamshield",
+        "/Users/gracegamstetter/cubecats/LEOPARD/arduinoFiles",
+        "/Users/gracegamstetter/cubecats/LEOPARD",
+        "/Users/gracegamstetter/documents/Arduino/libraries",
+        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/Wire/src",
+        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/EEPROM/src",
+        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/SPI/src",
+        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/SoftwareSerial/src"
+    ],
+    "C_Cpp.intelliSenseEngine": "Tag Parser"
+}
