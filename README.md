@@ -65,7 +65,7 @@ Once you open this directory in VSCode, you will need to configure settings befo
             "-std=c++11"
         ],
     }
-    ```json
+    ```
 
 ## Acknowledgements of Technologies and Softwares Used
 
