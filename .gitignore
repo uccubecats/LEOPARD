@@ -1,2 +1,14 @@
-.vscode/*
+# Ignore specific files
+.settings.xml
+.monitor
+.DS_Store
+
+# Wildcards
+*~
+#*.swp
 *.json
+
+# Directories
+node_modules/
+build/
+.vscode/

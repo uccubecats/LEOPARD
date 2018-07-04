@@ -28,7 +28,7 @@ SparkFun Multiplexer Breakout - 8-Channel(74HC4051) v10
 // Pin Definitions //
 /////////////////////
 
-#include <Arduino.h>
+#include "Arduino.h"
 #include "bqJunior/bqJunior.h"
 #include "Wire.h"
 
