@@ -1,15 +1,13 @@
 {
     "C_Cpp.default.browse.path": [
-        "/Users/gracegamstetter/cubecats/LEOPARD/bqJunior",
-        "/Users/gracegamstetter/cubecats/LEOPARD/payload",
-        "/Users/gracegamstetter/cubecats/LEOPARD/hamshield",
-        "/Users/gracegamstetter/cubecats/LEOPARD/arduinoFiles",
-        "/Users/gracegamstetter/cubecats/LEOPARD",
-        "/Users/gracegamstetter/documents/Arduino/libraries",
-        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/Wire/src",
-        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/EEPROM/src",
-        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/SPI/src",
-        "/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/libraries/SoftwareSerial/src"
+        "/Users/gracegamstetter/Documents/Arduino/LEOPARD",
+        "/Users/gracegamstetter/Documents/Arduino/LEOPARD/bqJunior",
+        "/Users/gracegamstetter/Documents/Arduino/LEOPARD/hamshield",
+        "/Users/gracegamstetter/Documents/Arduino/LEOPARD/leopard_common",
+        "/Users/gracegamstetter/Documents/Arduino/LEOPARD/payload"
     ],
-    "C_Cpp.intelliSenseEngine": "Tag Parser"
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "files.associations": {
+        "*.ipp": "cpp"
+    }
 }

@@ -5,13 +5,12 @@
 */
 
 #include <stdint.h>
-#include "BQCore.h"
+#include "bqJunior.h"
 
 uint8_t readFromSingleRegister(uint8_t addr)
 {
     // TODO: Finish
     // make sure to account for even/odd register differences
-    uint8_t temp = BQAddr::AT_RATE_ADDR;
     return 0;
 }
 

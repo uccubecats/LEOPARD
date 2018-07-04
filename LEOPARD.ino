@@ -29,12 +29,12 @@ SparkFun Multiplexer Breakout - 8-Channel(74HC4051) v10
 /////////////////////
 
 #include <Arduino.h>
-
-//testing github
+#include "bqJunior/bqJunior.h"
+#include "Wire.h"
 
 const int selectPins[3] = {2, 3, 4}; // S0~2, S1~3, S2~4
 const int zOutput = 5; 
-const int zInput = A0; // Connect common (Z) to A0 (analog input)
+const int zInput = 14; // Connect common (Z) to A0 (analog input)
 
 void setup()
 {
@@ -58,7 +58,7 @@ void loop()
   for (byte pin=0; pin<=7; pin++)
   {
     selectMuxPin(pin); // Select one at a time
-    int inputValue = analogRead(A0); // and read Z
+    int inputValue = analogRead(zInput); // and read Z
     Serial.print(String(inputValue) + "\t");
   }
   Serial.println();
