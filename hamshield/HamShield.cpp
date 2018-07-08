@@ -5,6 +5,7 @@
 
 #include "Arduino.h"
 #include "HamShield.h"
+#include "SparkFunLSM9DS1.h"
 #include <avr/wdt.h>
 #include <avr/pgmspace.h>
 // #include <PCM.h>

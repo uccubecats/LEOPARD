@@ -1,13 +1,10 @@
+/*
+** UC CubeCats
+** Project LEOPARD
+** On Board Computing
+*/
+
 /******************************************************************************
-Mux_Analog_Input
-SparkFun Multiplexer Analog Input Example
-Jim Lindblom @ SparkFun Electronics
-August 15, 2016
-https://github.com/sparkfun/74HC4051_8-Channel_Mux_Breakout
-This sketch demonstrates how to use the SparkFun Multiplexer
-Breakout - 8 Channel (74HC4051) to read eight, separate
-analog inputs, using just a single ADC channel.
-Hardware Hookup:
 Mux Breakout ----------- Arduino
      S0 ------------------- 2
      S1 ------------------- 3
@@ -16,20 +13,11 @@ Mux Breakout ----------- Arduino
     VCC ------------------- 5V
     GND ------------------- GND
     (VEE should be connected to GND)
-The multiplexers independent I/O (Y0-Y7) can each be wired
-up to a potentiometer or any other analog signal-producing
-component.
-Development environment specifics:
-Arduino 1.6.9
-SparkFun Multiplexer Breakout - 8-Channel(74HC4051) v10
-(https://www.sparkfun.com/products/13906)
 ******************************************************************************/
-/////////////////////
-// Pin Definitions //
-/////////////////////
 
 #include "Arduino.h"
 #include "bqJunior/bqJunior.h"
+#include "leopard_common/leopard_common.h"
 #include "Wire.h"
 
 const int selectPins[3] = {2, 3, 4}; // S0~2, S1~3, S2~4
@@ -38,6 +26,7 @@ const int zInput = 14; // Connect common (Z) to A0 (analog input)
 
 void setup()
 {
+
   Serial.begin(9600); // Initialize the serial port
   // Set up the select pins as outputs:
   for (int i=0; i<3; i++)

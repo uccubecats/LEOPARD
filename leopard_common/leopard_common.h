@@ -7,9 +7,6 @@
 #ifndef LEOPARD_COMMON_H
 #define LEOPARD_COMMON_H
 
-#include <stdint.h>
-#include <list>
-
 /******************** Digital Pinout ********************/
 
 //Hamshield
@@ -38,11 +35,5 @@
 #define COMMS_RST_PIN       A3
 #define COMMS_DAT           A4
 #define COMMS_CLK           A5
-
-class LEOPARDCommon
-{
-    // Return list of selector pin values for MUX: {s0, s1, s2}
-    std::list<int> getMuxSelectPins() {std::list<int> list({PAYLOAD_S0_PIN, PAYLOAD_S1_PIN, PAYLOAD_S2_PIN}); return list;};
-};
 
 #endif
