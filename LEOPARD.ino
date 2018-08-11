@@ -4,65 +4,85 @@
 ** On Board Computing
 */
 
-/******************************************************************************
-Mux Breakout ----------- Arduino
-     S0 ------------------- 2
-     S1 ------------------- 3
-     S2 ------------------- 4
-     Z -------------------- A0
-    VCC ------------------- 5V
-    GND ------------------- GND
-    (VEE should be connected to GND)
-******************************************************************************/
-
 #include "Arduino.h"
 #include "bqJunior/bqJunior.h"
 #include "leopard_common/leopard_common.h"
+#include "hamshield/HamShield.h"
+#include "hamshield/HamShield_comms.h"
+#include "payload/payload.h"
 #include "Wire.h"
 
-const int selectPins[3] = {2, 3, 4}; // S0~2, S1~3, S2~4
-const int zOutput = 5; 
-const int zInput = 14; // Connect common (Z) to A0 (analog input)
+int payload_sensor_iterator = 0;
+Payload payload;
 
 void setup()
 {
+  /************************ Power ************************/
 
-  Serial.begin(9600); // Initialize the serial port
-  // Set up the select pins as outputs:
-  for (int i=0; i<3; i++)
-  {
-    pinMode(selectPins[i], OUTPUT);
-    digitalWrite(selectPins[i], HIGH);
-  }
-  pinMode(zInput, INPUT); // Set up Z as an input
+  /******************** Communications ********************/
 
-  // Print the header:
-  Serial.println("Y0\tY1\tY2\tY3\tY4\tY5\tY6\tY7");
-  Serial.println("---\t---\t---\t---\t---\t---\t---\t---");
+  /******************** Attitude System ********************/
+
+  /******************** Payload Sensors ********************/
+
+  // Set up the Mux "select configuration" pins as outputs:
+  pinMode(PAYLOAD_S0_PIN, OUTPUT);
+  digitalWrite(PAYLOAD_S0_PIN, HIGH);
+  pinMode(PAYLOAD_S1_PIN, OUTPUT);
+  digitalWrite(PAYLOAD_S1_PIN, HIGH);
+  pinMode(PAYLOAD_S2_PIN, OUTPUT);
+  digitalWrite(PAYLOAD_S2_PIN, HIGH);
+
+  // Set up Z as an analog input
+  pinMode(PAYLOAD_Z_PIN, INPUT);
+
+  /******************** Storage Management ********************/
 }
 
 void loop() 
 {
-  // Loop through all eight pins.
-  for (byte pin=0; pin<=7; pin++)
-  {
-    selectMuxPin(pin); // Select one at a time
-    int inputValue = analogRead(zInput); // and read Z
-    Serial.print(String(inputValue) + "\t");
-  }
-  Serial.println();
+  /************************ Power ************************/
+  // TODO: Determine amount of power on battery
+  // TODO: Determine if system needs to go into different power mode and take action accordingly 
+
+  /******************** Communications ********************/
+  // TODO: Send heartbeat beacon every so often
+  // TODO: Determine if packet was received, and analyze it if applicable
+  // TODO: Determine if packet should be sent and take action if applicable
+  // TODO: Determine if toggle Tx/Rx is in order and take action if it is so
+
+  /******************** Attitude System ********************/
+  // TODO: Read necessary data from magnetometer and store
+
+  /******************** Payload Sensors ********************/
+
+  // Configure Mux Pins for current payload sensor and read output
+  configureMuxPin(payload_sensor_iterator);
+  int inputValue = analogRead(PAYLOAD_Z_PIN);
+
+  // TODO: Store value, analyze it if necessary
+
+  // Increment Payload sensor counter
+  payload_sensor_iterator = (payload_sensor_iterator + 1) % 8;
+
+  /******************** Storage Management ********************/
+  // TODO: Determine if storage too full and compress/delete data as necessary
+
+  /******************** Other Management ********************/
+
+  // Pause 1 second between each loop iteration
   delay(1000);
 }
 
-// The selectMuxPin function sets the S0, S1, and S2 pins
-// accordingly, given a pin from 0-7.
-void selectMuxPin(byte pin)
+int select_pins[3] = {PAYLOAD_S0_PIN, PAYLOAD_S1_PIN, PAYLOAD_S2_PIN};
+
+void configureMuxPin(int payload_sensor)
 {
-  for (int i=0; i<3; i++)
-  {
-    if (pin & (1<<i))
-      digitalWrite(selectPins[i], HIGH);
-    else
-      digitalWrite(selectPins[i], LOW);
-  }
+    for (int i = 0; i <= 3; i++)
+    {
+        if (payload_sensor & (1<<i))
+            digitalWrite(select_pins[i], HIGH);
+        else
+            digitalWrite(select_pins[i], LOW);
+    }
 }

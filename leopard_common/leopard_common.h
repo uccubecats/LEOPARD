@@ -9,7 +9,7 @@
 
 /******************** Digital Pinout ********************/
 
-//Hamshield
+// Hamshield
 #define COMMS_SWITCH_PIN    2
 #define COMMS_MiC_PIN       3
 

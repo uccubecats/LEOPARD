@@ -17,8 +17,6 @@
 // HamShield constants
 
 #define HAMSHIELD_MORSE_BUFFER_SIZE      80    // Char buffer size for morse code text
-#define HAMSHIELD_AUX_BUTTON              2    // Pin assignment for AUX button
-#define HAMSHIELD_PWM_PIN                 3    // Pin assignment for PWM output
 #define HAMSHIELD_EMPTY_CHANNEL_RSSI   -110    // Default threshold where channel is considered "clear"
 
 // button modes

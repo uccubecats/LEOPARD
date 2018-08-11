@@ -33,22 +33,22 @@ int8_t HSreadWord(uint8_t devAddr, uint8_t regAddr, uint16_t *data)
 	uint16_t temp_dat;
 	// bitbang for great justice!
 	*data = 0;
-	pinMode(DAT, OUTPUT);
+	pinMode(COMMS_DAT, OUTPUT);
 	regAddr = regAddr | (1 << 7);
 	
 	digitalWrite(devAddr, 0); //PORTC &= ~(1<<1); //devAddr used as chip select
 	for (int i = 0; i < 8; i++) {
 		temp = ((regAddr & (0x80 >> i)) != 0);
-		digitalWrite(CLK, 0); //PORTC &= ~(1<<5); //
-		digitalWrite(DAT, temp);
-		digitalWrite(CLK, 1); //PORTC |= (1<<5); //
+		digitalWrite(COMMS_CLK, 0); //PORTC &= ~(1<<5); //
+		digitalWrite(COMMS_DAT, temp);
+		digitalWrite(COMMS_CLK, 1); //PORTC |= (1<<5); //
 	}
 	// change direction of DAT
-	pinMode(DAT, INPUT); //	DDRC &= ~(1<<4); //
+	pinMode(COMMS_DAT, INPUT); //	DDRC &= ~(1<<4); //
 	for (int i = 15; i >= 0; i--) {
-		digitalWrite(CLK, 0); //PORTC &= ~(1<<5); //
-		digitalWrite(CLK, 1); //PORTC |= (1<<5); //
-		temp_dat = digitalRead(DAT); //((PINC & (1<<4)) != 0);
+		digitalWrite(COMMS_CLK, 0); //PORTC &= ~(1<<5); //
+		digitalWrite(COMMS_CLK, 1); //PORTC |= (1<<5); //
+		temp_dat = digitalRead(COMMS_DAT); //((PINC & (1<<4)) != 0);
 		temp_dat = temp_dat << i;
 		*data |= temp_dat;
 	}
@@ -91,21 +91,21 @@ bool HSwriteWord(uint8_t devAddr, uint8_t regAddr, uint16_t data)
 	//digitalWrite(13, HIGH);
 	
 	// bitbang for great justice!
-	pinMode(DAT, OUTPUT);
+	pinMode(COMMS_DAT, OUTPUT);
 	regAddr = regAddr & ~(1 << 7);
 	
 	digitalWrite(devAddr, 0); // PORTC &= ~(1<<1); //CS
 	for (int i = 0; i < 8; i++) {
 		temp_reg = ((regAddr & (0x80 >> i)) != 0);
-		digitalWrite(CLK, 0); //PORTC &= ~(1<<5); //
-		digitalWrite(DAT, regAddr & (0x80 >> i));
-		digitalWrite(CLK, 1); // PORTC |= (1<<5); //
+		digitalWrite(CCOMMS_CLK, 0); //PORTC &= ~(1<<5); //
+		digitalWrite(COMMS_DAT, regAddr & (0x80 >> i));
+		digitalWrite(COMMS_CLK, 1); // PORTC |= (1<<5); //
 	}
 	for (int i = 0; i < 16; i++) {
 		temp_dat = ((data & (0x8000 >> i)) != 0);
-		digitalWrite(CLK, 0); //PORTC &= ~(1<<5); //
-		digitalWrite(DAT, temp_dat);
-		digitalWrite(CLK, 1); // PORTC |= (1<<5); //
+		digitalWrite(COMMS_CLK, 0); //PORTC &= ~(1<<5); //
+		digitalWrite(COMMS_DAT, temp_dat);
+		digitalWrite(COMMS_CLK, 1); // PORTC |= (1<<5); //
 	}
 	
 	digitalWrite(devAddr, 1); //PORTC |= (1<<1); //CS

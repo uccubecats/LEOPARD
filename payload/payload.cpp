@@ -4,4 +4,15 @@
 ** On Board Computing
 */
 
-// TODO: Write code for reading/analyzing data from payload
+#include "payload.h"
+
+void Payload::configureMuxPin(int payload_sensor)
+{
+    for (int i = 0; i <= 3; i++)
+    {
+        if (payload_sensor & (1<<i))
+            digitalWrite(select_pins[i], HIGH);
+        else
+            digitalWrite(select_pins[i], LOW);
+    }
+}

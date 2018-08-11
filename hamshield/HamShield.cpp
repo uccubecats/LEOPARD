@@ -124,15 +124,15 @@ volatile long bouncer = 0;
  * @see A1846S_DEFAULT_ADDRESS
  */
 HamShield::HamShield() {
-    devAddr = A1; // devAddr is the chip select pin used by the HamShield
+    // COMMS_nCS_PIN is the chip select pin used by the HamShield
     sHamShield = this;
 	
-    pinMode(devAddr, OUTPUT);
-    digitalWrite(devAddr, HIGH);
-    pinMode(CLK, OUTPUT);
-	digitalWrite(CLK, HIGH);
-    pinMode(DAT, OUTPUT);
-	digitalWrite(DAT, HIGH);
+    pinMode(COMMS_nCS_PIN, OUTPUT);
+    digitalWrite(COMMS_nCS_PIN, HIGH);
+    pinMode(COMMS_CLK, OUTPUT);
+	digitalWrite(COMMS_CLK, HIGH);
+    pinMode(COMMS_DAT, OUTPUT);
+	digitalWrite(COMMS_DAT, HIGH);
 }
 
 /** Specific address constructor.
@@ -146,10 +146,10 @@ HamShield::HamShield(uint8_t cs_pin) {
 	
     pinMode(devAddr, OUTPUT);
     digitalWrite(devAddr, HIGH);
-    pinMode(CLK, OUTPUT);
-	digitalWrite(CLK, HIGH);
-    pinMode(DAT, OUTPUT);
-	digitalWrite(DAT, HIGH);
+    pinMode(COMMS_CLK, OUTPUT);
+	digitalWrite(COMMS_CLK, HIGH);
+    pinMode(COMMS_DAT, OUTPUT);
+	digitalWrite(COMMS_DAT, HIGH);
 }
 
 
@@ -1372,10 +1372,10 @@ uint32_t HamShield::findWhitespaceChannels(uint32_t buffer[],uint8_t buffsize, u
 
 /* Setup the auxiliary button input mode and register the ISR */
 void HamShield::buttonMode(uint8_t mode) { 
-   pinMode(HAMSHIELD_AUX_BUTTON,INPUT);       // set the pin mode to input
-   digitalWrite(HAMSHIELD_AUX_BUTTON,HIGH);   // turn on internal pull up
-   if(mode == PTT_MODE) { attachInterrupt(HAMSHIELD_AUX_BUTTON, HamShield::isr_ptt, CHANGE); } 
-   if(mode == RESET_MODE) { attachInterrupt(HAMSHIELD_AUX_BUTTON, HamShield::isr_reset, CHANGE); }
+   pinMode(COMMS_SWITCH_PIN,INPUT);       // set the pin mode to input
+   digitalWrite(COMMS_SWITCH_PIN,HIGH);   // turn on internal pull up
+   if(mode == PTT_MODE) { attachInterrupt(COMMS_SWITCH_PIN, HamShield::isr_ptt, CHANGE); } 
+   if(mode == RESET_MODE) { attachInterrupt(COMMS_SWITCH_PIN, HamShield::isr_reset, CHANGE); }
 }
 
 /* Interrupt routines */
@@ -1467,10 +1467,10 @@ void HamShield::morseOut(char buffer[HAMSHIELD_MORSE_BUFFER_SIZE]) {
       // We delay by 4 here, if we previously sent a symbol. Otherwise 7.
       // This could probably just be always 7 and go relatively unnoticed.
       if(prev == 0 || prev == ' '){
-        tone(HAMSHIELD_PWM_PIN, 6000, morse_dot_millis * 7);
+        tone(COMMS_MiC_PIN, 6000, morse_dot_millis * 7);
         delay(morse_dot_millis*7);
       } else {
-        tone(HAMSHIELD_PWM_PIN, 6000, morse_dot_millis * 4);
+        tone(COMMS_MiC_PIN, 6000, morse_dot_millis * 4);
         delay(morse_dot_millis*4);
       }
       continue;
@@ -1480,19 +1480,19 @@ void HamShield::morseOut(char buffer[HAMSHIELD_MORSE_BUFFER_SIZE]) {
     if(bits) { // If it is a valid character...
       do {
         if(bits & 1) {
-          tone(HAMSHIELD_PWM_PIN, morse_freq, morse_dot_millis * 3);
+          tone(COMMS_MiC_PIN, morse_freq, morse_dot_millis * 3);
           delay(morse_dot_millis*3);
         } else {
-          tone(HAMSHIELD_PWM_PIN, morse_freq, morse_dot_millis);
+          tone(COMMS_MiC_PIN, morse_freq, morse_dot_millis);
           delay(morse_dot_millis);
         }
-	tone(HAMSHIELD_PWM_PIN, 6000, morse_dot_millis);
+	tone(COMMS_MiC_PIN, 6000, morse_dot_millis);
         delay(morse_dot_millis);
         bits >>= 1; // Shift into the next symbol
       } while(bits != 1); // Wait for 1 termination to be all we have left
     }
     // End of character
-    tone(HAMSHIELD_PWM_PIN, 6000, morse_dot_millis * 3);
+    tone(COMMS_MiC_PIN, 6000, morse_dot_millis * 3);
     delay(morse_dot_millis * 3);
   }
   return;
@@ -1608,7 +1608,7 @@ void HamShield::SSTVTestPattern(int code) {
 /* wait for tone to complete */
 
 void HamShield::toneWait(uint16_t freq, long timer) { 
-    tone(HAMSHIELD_PWM_PIN,freq,timer);
+    tone(COMMS_MiC_PIN,freq,timer);
     delay(timer);
 }
 
@@ -1616,11 +1616,11 @@ void HamShield::toneWait(uint16_t freq, long timer) {
 
 void HamShield::toneWaitU(uint16_t freq, long timer) { 
     if(freq < 16383) { 
-    tone(HAMSHIELD_PWM_PIN,freq);
-    delayMicroseconds(timer); noTone(HAMSHIELD_PWM_PIN); return;
+    tone(COMMS_MiC_PIN,freq);
+    delayMicroseconds(timer); noTone(COMMS_MiC_PIN); return;
     }
-    tone(HAMSHIELD_PWM_PIN,freq);
-    delay(timer / 1000); noTone(HAMSHIELD_PWM_PIN); return;
+    tone(COMMS_MiC_PIN,freq);
+    delay(timer / 1000); noTone(COMMS_MiC_PIN); return;
 }
 
 
