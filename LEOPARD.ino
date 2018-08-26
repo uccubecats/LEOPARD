@@ -57,7 +57,7 @@ void loop()
   /******************** Payload Sensors ********************/
 
   // Configure Mux Pins for current payload sensor and read output
-  configureMuxPin(payload_sensor_iterator);
+  payload.configureMuxPin(payload_sensor_iterator);
   int inputValue = analogRead(PAYLOAD_Z_PIN);
 
   // TODO: Store value, analyze it if necessary
