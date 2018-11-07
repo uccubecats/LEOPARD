@@ -80,14 +80,6 @@ Once you open this directory in VSCode, you will need to configure settings befo
     }
     ```
 
-## Acknowledgements of Technologies and Softwares Used
-
-Project LEOPARD uses many open-sourced technologies for its development. We have included and modified arduino libraries from the following repositories:
-
-* [Sparkfun LSM9DS1 Arduino Library](https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library)
-* [HamShield](https://github.com/EnhancedRadioDevices/HamShield)
-* [Sparkfun 74HC4051 8-Channel Mux](https://github.com/sparkfun/74HC4051_8-Channel_Mux_Breakout)
-
 ## Team Roster
 
 | Member | Position |

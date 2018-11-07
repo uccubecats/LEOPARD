@@ -19,18 +19,19 @@ void setup()
 {
     // DEBUG
     Serial.begin(9600);
+    
 
-    /************************ Power ************************/
+    /**************** Power / Attitude System ****************/
 
-    // TODO: Figure out if anythin is needed here for I2C
+    // TODO: Uncomment
+    // Begin I2C Interface
+    // Wire.begin();
+
 
     /******************** Communications ********************/
 
     // TODO: Setup pins for Hamshield
 
-    /******************** Attitude System ********************/
-
-    // TODO: Figure out if anythin is needed here for I2C
 
     /******************** Payload Sensors ********************/
 
@@ -46,6 +47,7 @@ void setup()
     pinMode(PAYLOAD_Z_PIN, INPUT);
 
     // TODO: Set up a digital pin to manage current allocation to payload sensors
+
 
     /******************** Storage Management ********************/
 
@@ -72,16 +74,22 @@ void loop()
     // Set timestamp to current time (UTC)
     unsigned long timestamp = (unsigned long) now();
 
+
     /************************ Power Management ************************/
+
     // TODO: Determine amount of power on battery
     // TODO: Determine if system needs to go into different power mode and take action accordingly
 
+
     /******************** Packetization ********************/
 
+
     /******************** Communications ********************/
+
     // TODO: Determine if packet was received, and analyze it if applicable
     // TODO: Determine if packet should be sent and take action if applicable
     // TODO: Determine if toggle Tx/Rx is in order and take action if it is so
+
 
     /******************** Data Collection ********************/
 
@@ -108,6 +116,7 @@ void loop()
         payload.setPayloadReading(pin, reading);
     }
 
+
     /******************** Storage Management ********************/
     
     // Save filename as current timestamp
@@ -116,7 +125,6 @@ void loop()
     //data_file.println("[%i, %i, %i]", adcs.gx, adcs.gy, adcs.gz);
     data_file.close();
 
-    // TODO: Determine if storage too full and delete data if necessary
 
     /******************** Other ********************/
 
