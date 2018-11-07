@@ -9,7 +9,7 @@ Project LEOPARD is a CubeSat project developed by the University of Cincinnati C
 
 LEOPARD is a research project to determine the efficacy of various materials of radiation mitigation in the space environment. It uses 8 RADFET radiation sensors shielded with carbon-carbon composites, polyethylene and carbon-carbon, or unshielded to determine the effect of these materials on radiation protection over time.
 
-This repository is used for the main computing system of the satellite. It is intended to run on an Arduino Uno R3. For more information, please find the documentation located in the UC CubeCats Google Drive.
+This repository is used for the main computing system of the satellite. It is intended to run on an Arduino Uno R3. This repository includes the arduino sketch; for the libraries used in LEOPARD, please check out the [LEOPARD libraries repository](https://github.com/uccubecats/libraries).
 
 ## Setting Up Your Development Environment
 
@@ -25,7 +25,7 @@ The following steps should get you set up with a dev environment:
 
 ### Pull This Repo
 
-This repo should be pulled into your root Arduino directory set when you installed the Arduino IDE. For Macs, this would be `/Users/$(AppleID)/Documents/Arduino/`. For Windows, this would be `C:\Program Files (x86)\Arduino\libraries\`.
+This repo should be pulled into your root Arduino directory set when you installed the Arduino IDE, where Arduino sketches are located. For Macs, this would be `/Users/$(AppleID)/Documents/Arduino/`. For Windows, this would be `C:\Program Files (x86)\Arduino\`.
 
 ### Configure VSCode Settings
 
@@ -56,11 +56,7 @@ Once you open this directory in VSCode, you will need to configure settings befo
         "C_Cpp.default.cppStandard": "c++11",
         "C_Cpp.default.browse.path": [
             "$(WorkingDir)/LEOPARD",
-            "$(WorkingDir)/LEOPARD/adcs",
-            "$(WorkingDir)/LEOPARD/bqJunior",
-            "$(WorkingDir)/LEOPARD/hamshield",
-            "$(WorkingDir)/LEOPARD/leopard_common",
-            "$(WorkingDir)/LEOPARD/payload"
+            "$(WorkingDir)/libraries"
         ],
     }
     ```
@@ -86,7 +82,7 @@ Once you open this directory in VSCode, you will need to configure settings befo
 
 ## Acknowledgements of Technologies and Softwares Used
 
-Project LEOPARD uses many open-sourced technologies for its development. We have included and/or modified arduino libraries from the following repos:
+Project LEOPARD uses many open-sourced technologies for its development. We have included and modified arduino libraries from the following repositories:
 
 * [Sparkfun LSM9DS1 Arduino Library](https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library)
 * [HamShield](https://github.com/EnhancedRadioDevices/HamShield)
@@ -97,8 +93,4 @@ Project LEOPARD uses many open-sourced technologies for its development. We have
 | Member | Position |
 | --- | --- |
 | Grace Gamstetter | Lead Software Engineer |
-| Chris Morrison | Software Engineer |
-| Wesley Bumpus | Software Engineer |
-| Henry Voss | Software Engineer |
 | Nathan Brown | Software Engineer |
-| Jared Musser | Software Engineer |
