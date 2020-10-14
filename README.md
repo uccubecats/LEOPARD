@@ -55,7 +55,6 @@ Once you open this directory in VSCode, you will need to configure settings befo
         "C_Cpp.intelliSenseEngine": "Tag Parser",
         "C_Cpp.default.cppStandard": "c++11",
         "C_Cpp.default.browse.path": [
-            "$(WorkingDir)/LEOPARD",
             "$(WorkingDir)/libraries"
         ],
     }
@@ -84,5 +83,5 @@ Once you open this directory in VSCode, you will need to configure settings befo
 
 | Member | Position |
 | --- | --- |
-| Grace Gamstetter | Lead Software Engineer |
-| Nathan Brown | Software Engineer |
+| Todd Herron | Lead Software Engineer |
+| Sarah Hudson | Software Engineer |
