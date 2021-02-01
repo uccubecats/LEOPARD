@@ -85,3 +85,4 @@ Once you open this directory in VSCode, you will need to configure settings befo
 | --- | --- |
 | Todd Herron | Lead Software Engineer |
 | Sarah Hudson | Software Engineer |
+| Ryan Hardy | Software Engineer
