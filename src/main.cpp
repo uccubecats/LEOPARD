@@ -73,6 +73,18 @@ int Post_Launch(void){
 }
 
 
+//inert mode ignored as the board will not be on these modes will all need to be implemented
+//mode 0 = post-launch mode (done)
+//mode 1 = initialization mode (missing)
+//mode 2 = detumble mode (done)
+//mode 3 = nominal mode (done)
+//mode 4 = transmission mode (not done)
+//mode 5 = heartbeat mode (not done)
+//mode 6 = relay mode (not done)
+//mode 7 = safe mode (not done)
+//mode 8 = reboot mode (not done)
+//mode 9 = transmission shutdown mode (not done)
+
 int Void_Switch(void){
 	switch (mode)
 	{

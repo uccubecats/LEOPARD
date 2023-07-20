@@ -143,8 +143,9 @@ int DeTumble_Mode(void){
 				else{
 					uint16_t* data = GetData();
 				}		
+			}
+		
+		
 		}
-		
-		
 	}
 }
