@@ -83,6 +83,8 @@ Once you open this directory in VSCode, you will need to configure settings befo
 
 | Member | Position |
 | --- | --- |
+| Nathan Nguyen | President |
+| Matthew Verbryke | Project Manager |
 | Todd Herron | Lead Software Engineer |
 | Sarah Hudson | Software Engineer |
 | Ryan Hardy | Software Engineer
